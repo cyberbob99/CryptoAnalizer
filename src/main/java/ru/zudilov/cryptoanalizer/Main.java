@@ -1,7 +1,73 @@
 package ru.zudilov.cryptoanalizer;
 
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+    private static final List<Character> ALPHABET = Arrays.asList('А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З',
+            'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ',
+            'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з',
+            'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ',
+            'ъ', 'ы', 'ь', 'э', 'ю', 'я', '.', ',', '«', '»', '"', '\'', ':', '!', '?', ' ');
+
+    //Метод шифрует текс по шифру Цезаря
+    public static StringBuilder Encryption(String text, int key) {
+
+        var charText = new ArrayList<>();
+        for (char ch : text.toCharArray()) {
+            charText.add(ch);
+        }
+
+        int k = key >= ALPHABET.size() ?  - (ALPHABET.size() % key) :  - key;
+        ArrayList<Character> temp = new ArrayList<>(ALPHABET);
+
+        for (int i = 0; i < charText.size(); i++) {
+
+            for (int j = 0; j < temp.size(); j++) {
+                if (charText.get(i).equals(temp.get(j))) {
+                    Collections.rotate(temp, k);
+                    charText.remove(i);
+                    char ch = temp.get(j);
+                    charText.add(i, ch);
+                }
+            }
+
+        }
+        StringBuilder result = new StringBuilder();
+        for (Object ch:charText){
+          result.append(ch);
+        }
+
+        return result;
     }
+
+    //Метод для расшифровка шифра Цезаря
+    /*public static String Decoding (String text, int key){
+
+        return;
+    }*/
+    /*public static List rotate (int key){
+        List temp = new ArrayList<Character>();
+        Collections.copy(temp, ALPHABET);
+        int k = (ALPHABET.size()%key); //вычисляем реальное смещение
+        Collections.rotate(temp, k);
+        return temp;
+
+    }
+*/
+    public static void main(String[] args) {
+
+        String string = "Папа, мама";
+        int key = 1;
+        System.out.println(Encryption(string, key));
+
+    }
+
+
 }
