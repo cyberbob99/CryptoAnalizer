@@ -17,63 +17,49 @@ public class Main {
 
     //Метод шифрует текс по шифру Цезаря
     public static StringBuilder Encryption(String text, int key) {
-
-        var charText = new ArrayList<>();
+        ArrayList<Character> charText = new ArrayList<>();
         for (char ch : text.toCharArray()) {
             charText.add(ch);
         }
-
         int k = key >= ALPHABET.size() ? -(ALPHABET.size() % key) : -key;
-        ArrayList<Character> temp = new ArrayList<>(ALPHABET);
-
         for (int i = 0; i < charText.size(); i++) {
-
-            for (int j = 0; j < temp.size(); j++) {
-                if (charText.get(i).equals(temp.get(j))) {
-                    Collections.rotate(temp, k);
+            for (int j = 0; j < ALPHABET.size(); j++) {
+                if (charText.get(i).equals(ALPHABET.get(j))) {
+                    Collections.rotate(ALPHABET, k);
                     charText.remove(i);
-                    char ch = temp.get(j);
+                    char ch = ALPHABET.get(j);
                     charText.add(i, ch);
                 }
             }
-
         }
         StringBuilder result = new StringBuilder();
         for (Object ch : charText) {
             result.append(ch);
         }
-
         return result;
     }
 
     //Метод для расшифровка шифра Цезаря
     public static StringBuilder Decoding(String text, int key) {
-
-        var charText = new ArrayList<>();
+        ArrayList<Character> charText = new ArrayList<>();
         for (char ch : text.toCharArray()) {
             charText.add(ch);
         }
-
         int k = key >= ALPHABET.size() ? (ALPHABET.size() % key) : key;
-        ArrayList<Character> temp = new ArrayList<>(ALPHABET);
-
         for (int i = 0; i < charText.size(); i++) {
-
-            for (int j = 0; j < temp.size(); j++) {
-                if (charText.get(i).equals(temp.get(j))) {
-                    Collections.rotate(temp, k);
+            for (int j = 0; j < ALPHABET.size(); j++) {
+                if (charText.get(i).equals(ALPHABET.get(j))) {
+                    Collections.rotate(ALPHABET, k);
                     charText.remove(i);
-                    char ch = temp.get(j);
+                    char ch = ALPHABET.get(j);
                     charText.add(i, ch);
                 }
             }
-
         }
         StringBuilder result = new StringBuilder();
         for (Object ch : charText) {
             result.append(ch);
         }
-
         return result;
     }
 
@@ -86,6 +72,4 @@ public class Main {
         System.out.println(Decoding(string1, key));
 
     }
-
-
 }
