@@ -63,6 +63,35 @@ public class Main {
         return result;
     }
 
+    public static void bruteForceDecoding(String text) {
+        int count = 0;
+        ArrayList<Character> charText = new ArrayList<>();
+        for (char ch : text.toCharArray()) {
+            charText.add(ch);
+        }
+
+        while (count < ALPHABET.size()){
+            for (int i = 0; i < charText.size(); i++) {
+                for (int j = 0; j < ALPHABET.size(); j++) {
+                    if (charText.get(i).equals(ALPHABET.get(j))) {
+                        Collections.rotate(ALPHABET, 1);
+                        charText.remove(i);
+                        char ch = ALPHABET.get(j);
+                        charText.add(i, ch);
+                        StringBuilder result = new StringBuilder();
+                        for (Object object : charText) {
+                            result.append(object);
+                        }
+                        System.out.println(result);
+                    }
+                }
+            }
+            count++;
+        }
+
+
+    }
+
     public static void main(String[] args) {
 
         String string = "Папа, мама";
@@ -70,6 +99,7 @@ public class Main {
         int key = 1;
         System.out.println(Encryption(string, key));
         System.out.println(Decoding(string1, key));
+        bruteForceDecoding("Рбрб«Анбнб");
 
     }
 }
