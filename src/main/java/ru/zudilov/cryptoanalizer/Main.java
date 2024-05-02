@@ -1,7 +1,6 @@
 package ru.zudilov.cryptoanalizer;
 
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -24,7 +23,7 @@ public class Main {
             charText.add(ch);
         }
 
-        int k = key >= ALPHABET.size() ?  - (ALPHABET.size() % key) :  - key;
+        int k = key >= ALPHABET.size() ? -(ALPHABET.size() % key) : -key;
         ArrayList<Character> temp = new ArrayList<>(ALPHABET);
 
         for (int i = 0; i < charText.size(); i++) {
@@ -40,32 +39,51 @@ public class Main {
 
         }
         StringBuilder result = new StringBuilder();
-        for (Object ch:charText){
-          result.append(ch);
+        for (Object ch : charText) {
+            result.append(ch);
         }
 
         return result;
     }
 
     //Метод для расшифровка шифра Цезаря
-    /*public static String Decoding (String text, int key){
+    public static StringBuilder Decoding(String text, int key) {
 
-        return;
-    }*/
-    /*public static List rotate (int key){
-        List temp = new ArrayList<Character>();
-        Collections.copy(temp, ALPHABET);
-        int k = (ALPHABET.size()%key); //вычисляем реальное смещение
-        Collections.rotate(temp, k);
-        return temp;
+        var charText = new ArrayList<>();
+        for (char ch : text.toCharArray()) {
+            charText.add(ch);
+        }
 
+        int k = key >= ALPHABET.size() ? (ALPHABET.size() % key) : key;
+        ArrayList<Character> temp = new ArrayList<>(ALPHABET);
+
+        for (int i = 0; i < charText.size(); i++) {
+
+            for (int j = 0; j < temp.size(); j++) {
+                if (charText.get(i).equals(temp.get(j))) {
+                    Collections.rotate(temp, k);
+                    charText.remove(i);
+                    char ch = temp.get(j);
+                    charText.add(i, ch);
+                }
+            }
+
+        }
+        StringBuilder result = new StringBuilder();
+        for (Object ch : charText) {
+            result.append(ch);
+        }
+
+        return result;
     }
-*/
+
     public static void main(String[] args) {
 
         String string = "Папа, мама";
+        String string1 = "Рбрб«Анбнб";
         int key = 1;
         System.out.println(Encryption(string, key));
+        System.out.println(Decoding(string1, key));
 
     }
 
