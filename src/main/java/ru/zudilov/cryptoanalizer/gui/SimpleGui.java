@@ -53,7 +53,7 @@ public class SimpleGui extends JFrame {
         return outputPath.getText();
     }
 
-    public static String getKey() {
-        return key.getText();
+    public static int getKey() {
+        return Integer.parseInt(key.getText());
     }
 }
