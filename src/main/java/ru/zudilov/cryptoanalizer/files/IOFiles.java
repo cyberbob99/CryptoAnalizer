@@ -1,8 +1,13 @@
 package ru.zudilov.cryptoanalizer.files;
 import java.io.*;
 
+
 public class IOFiles {
+    private IOFiles(){
+
+    }
     public static String readFile(String string) {
+
         StringBuilder stringBuilder = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(string))) {
             String line;
@@ -11,6 +16,7 @@ public class IOFiles {
             }
         } catch (IOException e) {
             e.printStackTrace();
+
         }
         return stringBuilder.toString();
     }
@@ -20,6 +26,7 @@ public class IOFiles {
             writer.write(string);
         } catch (IOException e) {
             e.printStackTrace();
+
         }
     }
 }

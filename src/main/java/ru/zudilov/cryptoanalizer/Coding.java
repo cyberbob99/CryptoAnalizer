@@ -1,32 +1,33 @@
 package ru.zudilov.cryptoanalizer;
 
-import ru.zudilov.cryptoanalizer.constans.Constans;
-import ru.zudilov.cryptoanalizer.files.IOFiles;
-import ru.zudilov.cryptoanalizer.parametrs.Parametrs;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import ru.zudilov.cryptoanalizer.constans.Constants;
+import ru.zudilov.cryptoanalizer.files.IOFiles;
+import ru.zudilov.cryptoanalizer.gui.SimpleGui;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Coding {
 
+    private Coding(){
+
+    }
     //Метод шифрует текс по шифру Цезаря
     public static void coding () {
-        String string = IOFiles.readFile(Parametrs.getInputPath());
+        String string = IOFiles.readFile(SimpleGui.getInputPath());
         ArrayList<Character> charText = new ArrayList<>();
         for (char ch : string.toCharArray()) {
             charText.add(ch);
         }
-        int key = Parametrs.getKey();
-        int k = key >= Constans.ALPHABET.size() ? -(Constans.ALPHABET.size() % key) : -key;
+        int key = SimpleGui.getKey();
+        int k = key >= Constants.ALPHABET.size() ? -(Constants.ALPHABET.size() % key) : -key;
         for (int i = 0; i < charText.size(); i++) {
-            for (int j = 0; j < Constans.ALPHABET.size(); j++) {
-                if (charText.get(i).equals(Constans.ALPHABET.get(j))) {
-                    Collections.rotate(Constans.ALPHABET, k);
+            for (int j = 0; j < Constants.ALPHABET.size(); j++) {
+                if (charText.get(i).equals(Constants.ALPHABET.get(j))) {
+                    Collections.rotate(Constants.ALPHABET, k);
                     charText.remove(i);
-                    char ch = Constans.ALPHABET.get(j);
+                    char ch = Constants.ALPHABET.get(j);
                     charText.add(i, ch);
                 }
             }
@@ -35,7 +36,6 @@ public class Coding {
         for (Object ch : charText) {
             result.append(ch);
         }
-        IOFiles.writeFile(result.toString(), Parametrs.getOutputPath());
+        IOFiles.writeFile(result.toString(), SimpleGui.getOutputPath());
     }
-
 }

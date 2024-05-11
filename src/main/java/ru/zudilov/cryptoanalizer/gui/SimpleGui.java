@@ -13,7 +13,7 @@ public class SimpleGui extends JFrame {
     static JRadioButton encryption = new JRadioButton("Зашифровать");
     static JRadioButton decoding = new JRadioButton("Расшифровать");
     static JRadioButton bruteForce = new JRadioButton("Взломать");
-    static JRadioButton demo = new JRadioButton("Демо");
+
 
     public SimpleGui(){
         super("Шифр Цезаря");
@@ -33,13 +33,13 @@ public class SimpleGui extends JFrame {
         group.add(encryption);
         group.add(decoding);
         group.add(bruteForce);
-        group.add(demo);
+
 
         container.add(encryption);
         encryption.setSelected(true);
         container.add(decoding);
         container.add(bruteForce);
-        container.add(demo);
+
         button.addActionListener(new ButtonEventListener());
         container.add(button);
 
