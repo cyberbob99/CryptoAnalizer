@@ -1,4 +1,4 @@
-package ru.zudilov.cryptoanalizer;
+package ru.zudilov.cryptoanalizer.servis;
 
 import ru.zudilov.cryptoanalizer.constans.Constants;
 import ru.zudilov.cryptoanalizer.files.IOFiles;

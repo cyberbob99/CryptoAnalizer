@@ -1,5 +1,10 @@
 package ru.zudilov.cryptoanalizer.gui;
+import ru.zudilov.cryptoanalizer.servis.BruteForceDecoding;
+import ru.zudilov.cryptoanalizer.servis.Coding;
+import ru.zudilov.cryptoanalizer.servis.Decoding;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 public class SimpleGui extends JFrame {
@@ -33,8 +38,6 @@ public class SimpleGui extends JFrame {
         group.add(encryption);
         group.add(decoding);
         group.add(bruteForce);
-
-
         container.add(encryption);
         encryption.setSelected(true);
         container.add(decoding);
@@ -44,6 +47,7 @@ public class SimpleGui extends JFrame {
         container.add(button);
 
     }
+
 
     public static String getInputPath() {
         return inputPath.getText();

@@ -1,8 +1,8 @@
 package ru.zudilov.cryptoanalizer.gui;
 
-import ru.zudilov.cryptoanalizer.BruteForceDecoding;
-import ru.zudilov.cryptoanalizer.Coding;
-import ru.zudilov.cryptoanalizer.Decoding;
+import ru.zudilov.cryptoanalizer.servis.BruteForceDecoding;
+import ru.zudilov.cryptoanalizer.servis.Coding;
+import ru.zudilov.cryptoanalizer.servis.Decoding;
 
 
 import java.awt.event.ActionEvent;
